@@ -1,10 +1,10 @@
-import { IProjectCategory, IProject } from "../interfaces/project.interface";
+import { IProject, IProjectCategory } from "../interfaces/project.interface";
 import { ApiProperty } from "@nestjs/swagger";
 import { exampleIsoDate, exampleUuid } from "../../../helper";
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
-export class Project extends BaseEntity implements IProject {
+export class Project implements IProject {
 
   @PrimaryGeneratedColumn("uuid")
   @ApiProperty({
@@ -16,7 +16,7 @@ export class Project extends BaseEntity implements IProject {
   @Column()
   @ApiProperty({
     description: "Project title",
-    example: " 2D Tile game"
+    example: "2D Tile game"
   })
   public title: string;
 
@@ -36,15 +36,24 @@ export class Project extends BaseEntity implements IProject {
 
   @Column()
   @ApiProperty({
-    description: "Last update date",
-    example: exampleIsoDate
+    description: "URL to the GIT repository",
+    example: ""
   })
-  public updatedAt: Date;
+  public link: string;
 
-  @Column()
+  @CreateDateColumn()
   @ApiProperty({
     description: "Creation date",
     example: exampleIsoDate
   })
   public createdAt: Date;
+
+  @UpdateDateColumn()
+  @ApiProperty({
+    description: "Last update date",
+    example: exampleIsoDate
+  })
+  public updatedAt: Date;
+
+
 }

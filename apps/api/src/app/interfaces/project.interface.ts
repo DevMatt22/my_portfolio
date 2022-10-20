@@ -4,12 +4,13 @@ export interface IProject {
   title: string;
   category: IProjectCategory;
   description: string;
+  link: string;
   createdAt: Date;
   updatedAt: Date;
 }
 
 export enum IProjectCategory {
-  WEB,
-  VIDEOGAME,
-  OTHER,
+  WEB = "WEB",
+  VIDEOGAME = "VIDEOGAME",
+  OTHER = "OTHER",
 }
