@@ -4,8 +4,8 @@ import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { ConfigModule, ConfigService } from "@nestjs/config";
-import { Project } from "./models/project.model";
 import { ProjectsModule } from "./modules/projects.module";
+import { Project } from "./entities/project.entity";
 
 @Module({
   imports: [
@@ -20,6 +20,8 @@ import { ProjectsModule } from "./modules/projects.module";
         password: configService.get("DATABASE_PASSWORD"),
         database: configService.get("DATABASE_DB"),
         entities: [Project],
+        //entities: [join(__dirname, '**', '*.entity.{ts,js}')],
+        logging: "all",
         synchronize: true
       })
     }),
