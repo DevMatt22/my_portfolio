@@ -1,7 +1,7 @@
-import { Controller, Get, HttpStatus, Param } from "@nestjs/common";
-import { ApiNotFoundResponse, ApiOkResponse, ApiOperation, ApiParam, ApiTags } from "@nestjs/swagger";
+import { Body, Controller, Get, HttpStatus, Param, Post } from "@nestjs/common";
+import { ApiBody, ApiNotFoundResponse, ApiOkResponse, ApiOperation, ApiParam, ApiTags } from "@nestjs/swagger";
 import { ProjectService } from "../services/project.service";
-import { Project } from "../models/project.model";
+import { Project } from "../entities/project.entity";
 import { IProject } from "../interfaces/project.interface";
 
 
@@ -30,5 +30,16 @@ export class ProjectController {
   public async getById(@Param("projectId") projectId: string): Promise<IProject> {
 
     return await this.projectService.getById(projectId);
+  }
+
+  @Post()
+  @ApiBody({ type: Project })
+  @ApiOperation({ summary: "Create project", description: "Create a new product" })
+  @ApiOkResponse({ type: Project })
+  public async create(@Body() body: Project): Promise<Project> {
+
+    return await this.projectService.create(body);
+
+
   }
 }

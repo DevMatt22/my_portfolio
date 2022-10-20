@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { IProject } from "../interfaces/project.interface";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Project } from "../models/project.model";
+import { Project } from "../entities/project.entity";
 import { Repository } from "typeorm";
 
 
@@ -25,5 +25,10 @@ export class ProjectService {
 
   public async delete(id: string): Promise<void> {
     await this.projectsRepository.delete(id);
+  }
+
+  public async create(project: IProject): Promise<IProject> {
+
+    return this.projectsRepository.save(project);
   }
 }
