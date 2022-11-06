@@ -2,7 +2,7 @@ export interface IProject {
 
   id: string;
   title: string;
-  category: IProjectCategory;
+  category: IProjectCategory[];
   description: string;
   link: string;
   createdAt: Date;
