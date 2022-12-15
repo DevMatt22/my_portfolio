@@ -10,7 +10,6 @@ import {
 } from '@nestjs/swagger';
 import { ProjectService } from '../services/project.service';
 import { Project } from '../models/entities/project.entity';
-import { IProject } from '../interfaces/project.interface';
 import { ProjectDto } from '../models/projectDto.model';
 
 @Controller('projects')
@@ -22,7 +21,7 @@ export class ProjectController {
 	@ApiOperation({ summary: 'Get Projects', description: 'Get all projects' })
 	@ApiOkResponse({ type: Project })
 	@ApiNotFoundResponse({ status: HttpStatus.NOT_FOUND, description: 'Projects not found' })
-	public async getAll(): Promise<IProject[]> {
+	public async getAll(): Promise<Project[]> {
 		return await this.projectService.getAll();
 	}
 
@@ -31,7 +30,7 @@ export class ProjectController {
 	@ApiOperation({ summary: 'Get Project by Id', description: 'Get the project information' })
 	@ApiOkResponse({ type: Project })
 	@ApiNotFoundResponse({ status: HttpStatus.NOT_FOUND, description: 'Project not found' })
-	public async getById(@Param('projectId') projectId: string): Promise<IProject> {
+	public async getById(@Param('projectId') projectId: string): Promise<Project> {
 		return await this.projectService.getById(projectId);
 	}
 
