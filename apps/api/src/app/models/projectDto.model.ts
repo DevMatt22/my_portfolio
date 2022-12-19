@@ -31,4 +31,20 @@ export class ProjectDto implements IProjectDto {
 		example: 'http://localhost:3000/api',
 	})
 	public link: string;
+
+	@IsString()
+	@ApiProperty({
+		description: 'Project development start date',
+		example: 'June 2022,',
+		type: String,
+	})
+	public startProjectDate: string;
+
+	@IsString()
+	@ApiProperty({
+		description: 'Project development end date',
+		example: 'December 2022,',
+		type: String,
+	})
+	public endProjectDate: string;
 }
