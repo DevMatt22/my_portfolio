@@ -4,6 +4,8 @@ export interface IProject {
 	category: IProjectCategory[];
 	description: string;
 	link: string;
+	startProjectDate: string;
+	endProjectDate: string;
 	createdAt: Date;
 	updatedAt: Date;
 }

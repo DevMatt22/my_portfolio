@@ -18,6 +18,7 @@ export class Project implements IProject {
 	@ApiProperty({
 		description: 'Project title',
 		example: '2D Tile game',
+		type: String,
 	})
 	public title: string;
 
@@ -26,6 +27,7 @@ export class Project implements IProject {
 	@ApiProperty({
 		description: 'Project category',
 		enum: IProjectCategory,
+		type: IProjectCategory,
 	})
 	public category: IProjectCategory[];
 
@@ -34,6 +36,7 @@ export class Project implements IProject {
 	@ApiProperty({
 		description: 'Project description',
 		example: '',
+		type: String,
 	})
 	public description: string;
 
@@ -42,14 +45,34 @@ export class Project implements IProject {
 	@ApiProperty({
 		description: 'URL to the GIT repository',
 		example: '',
+		type: String,
 	})
 	public link: string;
+
+	@Column()
+	@IsString()
+	@ApiProperty({
+		description: 'Project development start date',
+		example: 'June 2022,',
+		type: String,
+	})
+	public startProjectDate: string;
+
+	@Column()
+	@IsString()
+	@ApiProperty({
+		description: 'Project development end date',
+		example: 'December 2022,',
+		type: String,
+	})
+	public endProjectDate: string;
 
 	@CreateDateColumn()
 	@IsDate()
 	@ApiProperty({
 		description: 'Creation date',
 		example: exampleIsoDate,
+		type: Date,
 	})
 	public createdAt: Date;
 
@@ -58,6 +81,7 @@ export class Project implements IProject {
 	@ApiProperty({
 		description: 'Last update date',
 		example: exampleIsoDate,
+		type: Date,
 	})
 	public updatedAt: Date;
 }

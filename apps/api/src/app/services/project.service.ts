@@ -31,10 +31,24 @@ export class ProjectService {
 	public async update(id: string, body: IProjectDto): Promise<IProject> {
 		const projectToUpdate = await this.projectsRepository.findOneBy({ id });
 
-		projectToUpdate.title = body.title;
-		projectToUpdate.description = body.description;
-		projectToUpdate.category = body.category;
-		projectToUpdate.link = body.link;
+		if (body.title) {
+			projectToUpdate.title = body.title;
+		}
+		if (body.description) {
+			projectToUpdate.description = body.description;
+		}
+		if (Array.isArray(body.category)) {
+			projectToUpdate.category = body.category;
+		}
+		if (body.link) {
+			projectToUpdate.link = body.link;
+		}
+		if (body.startProjectDate) {
+			projectToUpdate.startProjectDate = body.startProjectDate;
+		}
+		if (body.endProjectDate) {
+			projectToUpdate.endProjectDate = body.endProjectDate;
+		}
 
 		return this.projectsRepository.save(projectToUpdate);
 	}
