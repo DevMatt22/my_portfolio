@@ -2,13 +2,13 @@ name: CI
 on:
   push:
     branches:
-      - main
+      - master
       - release
       - dev
 
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   main:
