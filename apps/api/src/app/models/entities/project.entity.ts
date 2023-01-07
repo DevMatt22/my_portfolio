@@ -27,7 +27,6 @@ export class Project implements IProject {
 	@ApiProperty({
 		description: 'Project category',
 		enum: IProjectCategory,
-		type: IProjectCategory,
 	})
 	public category: IProjectCategory[];
 

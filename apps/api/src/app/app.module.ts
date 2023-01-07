@@ -7,6 +7,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ProjectsModule } from './modules/projects.module';
 import { Project } from './models/entities/project.entity';
 import { User } from './models/entities/user.entity';
+import { UsersModule } from './modules/user.module';
 
 @Module({
 	imports: [
@@ -26,6 +27,7 @@ import { User } from './models/entities/user.entity';
 			}),
 		}),
 		ProjectsModule,
+		UsersModule,
 	],
 	controllers: [AppController],
 	providers: [AppService],

@@ -10,7 +10,7 @@ import {
 } from '@nestjs/swagger';
 import { ProjectService } from '../services/project.service';
 import { Project } from '../models/entities/project.entity';
-import { ProjectDto } from '../models/projectDto.model';
+import { ProjectDto } from '../models/dtos/projectDto.model';
 
 @Controller('projects')
 @ApiTags('projects')

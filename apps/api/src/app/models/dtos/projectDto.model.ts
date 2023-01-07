@@ -1,7 +1,7 @@
-import { IProjectDto } from '../interfaces/projectDto.interface';
+import { IProjectDto } from '../../interfaces/projectDto.interface';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEnum, IsString } from 'class-validator';
-import { IProjectCategory } from '../interfaces/project.interface';
+import { IProjectCategory } from '../../interfaces/project.interface';
 
 export class ProjectDto implements IProjectDto {
 	@IsString()
