@@ -43,4 +43,4 @@ database.env
 /.env
 /migrations.json
 /apps/api/src/environments/
-/apps/portfolio-front/src/environments
+/apps/portfolio-front/src/environments/
