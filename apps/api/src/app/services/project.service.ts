@@ -9,7 +9,7 @@ import { IProjectDto } from '../interfaces/projectDto.interface';
 export class ProjectService {
 	constructor(
 		@InjectRepository(Project)
-		private projectsRepository: Repository<Project>,
+		private projectsRepository: Repository<Project>
 	) {}
 
 	public async getAll(): Promise<IProject[]> {
