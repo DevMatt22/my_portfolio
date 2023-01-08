@@ -30,7 +30,7 @@ export class Project implements IProject {
 	})
 	public category: IProjectCategory[];
 
-	@Column()
+	@Column({ nullable: true })
 	@IsString()
 	@ApiProperty({
 		description: 'Project description',
@@ -39,7 +39,7 @@ export class Project implements IProject {
 	})
 	public description: string;
 
-	@Column()
+	@Column({ nullable: true })
 	@IsString()
 	@ApiProperty({
 		description: 'URL to the GIT repository',
@@ -57,7 +57,7 @@ export class Project implements IProject {
 	})
 	public startProjectDate: string;
 
-	@Column()
+	@Column({ nullable: true })
 	@IsString()
 	@ApiProperty({
 		description: 'Project development end date',
@@ -73,7 +73,7 @@ export class Project implements IProject {
 		example: exampleIsoDate,
 		type: Date,
 	})
-	public createdAt: Date;
+	public createdAt?: Date;
 
 	@UpdateDateColumn()
 	@IsDate()
@@ -82,5 +82,5 @@ export class Project implements IProject {
 		example: exampleIsoDate,
 		type: Date,
 	})
-	public updatedAt: Date;
+	public updatedAt?: Date;
 }

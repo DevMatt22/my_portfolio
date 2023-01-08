@@ -3,8 +3,8 @@ import { IProjectCategory } from './project.interface';
 export interface IProjectDto {
 	title: string;
 	category: IProjectCategory[];
-	description: string;
-	link: string;
-	startProjectDate: string;
-	endProjectDate: string;
+	description?: string;
+	link?: string;
+	startProjectDate?: string;
+	endProjectDate?: string;
 }

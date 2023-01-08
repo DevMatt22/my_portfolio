@@ -23,14 +23,14 @@ export class ProjectDto implements IProjectDto {
 		description: 'Project description',
 		example: 'This is my portfolio project',
 	})
-	public description: string;
+	public description?: string;
 
 	@IsString()
 	@ApiProperty({
 		description: 'Project url',
 		example: 'http://localhost:3000/api',
 	})
-	public link: string;
+	public link?: string;
 
 	@IsString()
 	@ApiProperty({
@@ -38,7 +38,7 @@ export class ProjectDto implements IProjectDto {
 		example: 'June 2022,',
 		type: String,
 	})
-	public startProjectDate: string;
+	public startProjectDate?: string;
 
 	@IsString()
 	@ApiProperty({
@@ -46,5 +46,5 @@ export class ProjectDto implements IProjectDto {
 		example: 'December 2022,',
 		type: String,
 	})
-	public endProjectDate: string;
+	public endProjectDate?: string;
 }

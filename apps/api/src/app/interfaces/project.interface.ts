@@ -6,8 +6,8 @@ export interface IProject {
 	link: string;
 	startProjectDate: string;
 	endProjectDate: string;
-	createdAt: Date;
-	updatedAt: Date;
+	createdAt?: Date;
+	updatedAt?: Date;
 }
 
 export enum IProjectCategory {

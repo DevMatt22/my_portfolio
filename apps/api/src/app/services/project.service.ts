@@ -17,7 +17,7 @@ export class ProjectService {
 	}
 
 	public async getById(id: string): Promise<IProject> {
-		return this.projectsRepository.findOneBy({ id });
+		return this.projectsRepository.findOneByOrFail({ id });
 	}
 
 	public async delete(id: string): Promise<void> {
@@ -37,7 +37,8 @@ export class ProjectService {
 		if (body.description) {
 			projectToUpdate.description = body.description;
 		}
-		if (Array.isArray(body.category)) {
+		if (body.category) {
+			console.log(body.category);
 			projectToUpdate.category = body.category;
 		}
 		if (body.link) {
