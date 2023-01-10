@@ -1,12 +1,26 @@
 name: CI
-on: push
+on:
+  push:
+    branches:
+      - master
+      - release
+      - dev
+  pull_request:
+      - master
+      - release
+
 jobs:
-  ci:
+  main:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: git fetch --no-tags --prune --depth=1 origin dev
-      - run: npm install
-      - run: npx nx affected --target=test --base=origin/dev
-      - run: npx nx affected --target=lint --base=origin/dev
-      - run: npx nx affected --target=build --base=origin/dev
+        with:
+          fetch-depth: 0
+      - uses: nrwl/nx-set-shas@v3
+      - run: npm ci
+
+      - run: npx nx workspace-lint
+      - run: npx nx format:check
+      - run: npx nx affected --target=lint --parallel=3
+      - run: npx nx affected --target=test --parallel=3 --ci --code-coverage
+      - run: npx nx affected --target=build --parallel=3
