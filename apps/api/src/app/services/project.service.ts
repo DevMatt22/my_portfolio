@@ -4,13 +4,17 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Project } from '../models/entities/project.entity';
 import { Repository } from 'typeorm';
 import { IProjectDto } from '../interfaces/projectDto.interface';
+import { LoggerService } from './logger/logger.service';
 
 @Injectable()
 export class ProjectService {
 	constructor(
 		@InjectRepository(Project)
-		private projectsRepository: Repository<Project>
-	) {}
+		private projectsRepository: Repository<Project>,
+		private readonly loggerService: LoggerService
+	) {
+		this.loggerService.setContext('ProjectService');
+	}
 
 	public async getAll(): Promise<IProject[]> {
 		return this.projectsRepository.find();
