@@ -33,7 +33,7 @@ export class ProjectService {
 	}
 
 	public async update(id: string, body: IProjectDto): Promise<IProject> {
-		const projectToUpdate = await this.projectsRepository.findOneBy({ id });
+		const projectToUpdate = await this.projectsRepository.findOneByOrFail({ id });
 
 		if (body.title) {
 			projectToUpdate.title = body.title;
@@ -42,7 +42,6 @@ export class ProjectService {
 			projectToUpdate.description = body.description;
 		}
 		if (body.category) {
-			console.log(body.category);
 			projectToUpdate.category = body.category;
 		}
 		if (body.link) {
