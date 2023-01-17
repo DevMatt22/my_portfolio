@@ -1,0 +1,78 @@
+<div class="container">
+	<h1 class="text-4xl flex justify-content-center">Formulaire de contact</h1>
+
+	<div class="flex justify-content-center mt-5">
+		<form [formGroup]="contactForm" (ngSubmit)="onSubmitForm()">
+			<div class="form-group">
+				<div class="">
+					<label for="senderEmail" class="text-2xl block mb-3"> Email </label>
+					<input
+						pInputText
+						class="form-control"
+						type="email"
+						placeholder="example@example.com"
+						id="senderEmail"
+						formControlName="senderEmail"
+						size="100%"
+					/>
+
+					<small
+						class="p-error block"
+						*ngIf="contactForm.get('senderEmail')?.invalid && contactForm.get('senderEmail')?.dirty"
+					>
+						An email is required
+					</small>
+				</div>
+
+				<div class="mt-4">
+					<label for="senderObject" class="text-2xl block mb-3"> Objet </label>
+					<input
+						pInputText
+						type="text"
+						id="senderObject"
+						formControlName="senderObject"
+						class="form-control"
+						size="100%"
+					/>
+					<small
+						class="p-error block"
+						*ngIf="contactForm.get('senderObject')?.invalid && contactForm.get('senderObject')?.dirty"
+					>
+						An object is required
+					</small>
+				</div>
+			</div>
+
+			<div class="form-group mt-5">
+				<p-editor
+					formControlName="senderContent"
+					[style]="{ height: '18rem', width: 'auto' }"
+					class="form-control"
+				></p-editor>
+			</div>
+
+			<div class="mt-4 flex justify-content-center gap-4">
+				<button
+					pButton
+					type="submit"
+					label="Envoyer"
+					class="p-button-primary"
+					[disabled]="contactForm.invalid"
+					(click)="onSubmitForm()"
+				></button>
+				<button
+					pButton
+					type="button"
+					label="Annuler"
+					class="p-button-primary"
+					(click)="onResetContactForm()"
+				></button>
+			</div>
+		</form>
+	</div>
+</div>
+
+<p>{{ contactForm.value.senderEmail }}</p>
+<p>{{ contactForm.value.senderObject }}</p>
+<!--<p>{{ contactForm.value.senderContent }}</p>-->
+<p>{{ transformText(contactForm.value.senderContent) }}</p>

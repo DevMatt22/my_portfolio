@@ -2,29 +2,32 @@ import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatTabsModule } from '@angular/material/tabs';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { HomeComponent } from './home/home/home.component';
+import { HeaderComponent } from './header/header.component';
+import { AppRoutingModule } from './app-routing.module';
+import { EditorModule } from 'primeng/editor';
+import { PaginatorModule } from 'primeng/paginator';
+import { TabMenuModule } from 'primeng/tabmenu';
+import { ButtonModule } from 'primeng/button';
+import { MenubarModule } from 'primeng/menubar';
 
 registerLocaleData(localeFr);
 
 @NgModule({
-	declarations: [AppComponent, NxWelcomeComponent],
+	declarations: [AppComponent, HomeComponent, HeaderComponent],
 	imports: [
 		BrowserModule,
 		HttpClientModule,
-		BrowserAnimationsModule,
-		MatToolbarModule,
-		MatIconModule,
-		MatButtonModule,
-		MatTabsModule,
+		AppRoutingModule,
+		EditorModule,
+		PaginatorModule,
+		TabMenuModule,
+		ButtonModule,
+		MenubarModule,
 	],
 	providers: [
 		{
@@ -33,5 +36,6 @@ registerLocaleData(localeFr);
 		},
 	],
 	bootstrap: [AppComponent],
+	exports: [HomeComponent],
 })
 export class AppModule {}
