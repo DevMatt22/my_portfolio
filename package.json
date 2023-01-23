@@ -31,13 +31,17 @@
     "@nestjs/swagger": "^6.1.2",
     "@nestjs/typeorm": "^9.0.1",
     "@nrwl/angular": "15.4.8",
+    "@octokit/rest": "^19.0.5",
+    "@octokit/types": "^8.1.1",
     "@types/uuid": "^8.3.4",
     "class-validator": "^0.13.2",
     "octokit": "^2.0.11",
     "path": "^0.12.7",
     "pg": "^8.8.0",
+    "primeflex": "^3.3.0",
     "primeicons": "^6.0.1",
     "primeng": "^15.0.1",
+    "quill": "^1.3.7",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
@@ -82,4 +86,3 @@
     "typescript": "4.8.4"
   }
 }
-
