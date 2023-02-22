@@ -1,10 +1,13 @@
-import { IProjectCategory } from './project.interface';
-
 export interface IProjectDto {
+	gitId: string;
 	title: string;
-	category: IProjectCategory[];
 	description?: string;
-	link?: string;
-	startProjectDate?: string;
+	language: string;
+	topics: string;
+	url: string;
+	visibility: string;
+	startProjectDate: string;
 	endProjectDate?: string;
+	createdAt?: Date;
+	updatedAt?: Date;
 }

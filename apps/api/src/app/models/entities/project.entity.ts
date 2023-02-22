@@ -1,11 +1,10 @@
-import { IProject, IProjectCategory } from '../../interfaces/project.interface';
 import { ApiProperty } from '@nestjs/swagger';
 import { exampleIsoDate, exampleUuid } from '../../../../helper';
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
-import { IsDate, IsEnum, IsString } from 'class-validator';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { IsDate, IsString } from 'class-validator';
 
 @Entity()
-export class Project implements IProject {
+export class Project {
 	@PrimaryGeneratedColumn('uuid')
 	@ApiProperty({
 		description: 'Project Id',
@@ -16,37 +15,61 @@ export class Project implements IProject {
 	@Column()
 	@IsString()
 	@ApiProperty({
+		description: 'Git Repo id ',
+		example: '123456789',
+	})
+	public gitId: string;
+
+	@Column()
+	@IsString()
+	@ApiProperty({
 		description: 'Project title',
 		example: '2D Tile game',
 		type: String,
 	})
 	public title: string;
 
-	@Column({ type: 'enum', enum: IProjectCategory })
-	@IsEnum(IProjectCategory)
-	@ApiProperty({
-		description: 'Project category',
-		enum: IProjectCategory,
-	})
-	public category: IProjectCategory[];
-
 	@Column({ nullable: true })
 	@IsString()
 	@ApiProperty({
 		description: 'Project description',
-		example: '',
+		example: ' Example description ',
 		type: String,
 	})
 	public description: string;
 
-	@Column({ nullable: true })
+	@Column()
+	@IsString()
+	@ApiProperty({
+		description: 'Project main language',
+		example: 'TypeScript',
+	})
+	public language: string;
+
+	@Column({ nullable: true, array: true })
+	@IsString()
+	@ApiProperty({
+		description: 'Project related topics',
+		example: '[] ',
+	})
+	public topics: string;
+
+	@Column()
 	@IsString()
 	@ApiProperty({
 		description: 'URL to the GIT repository',
 		example: '',
 		type: String,
 	})
-	public link: string;
+	public url: string;
+
+	@Column()
+	@IsString()
+	@ApiProperty({
+		description: 'Project current visibility',
+		example: 'public ',
+	})
+	public visibility: string;
 
 	@Column()
 	@IsString()
@@ -66,7 +89,7 @@ export class Project implements IProject {
 	})
 	public endProjectDate: string;
 
-	@CreateDateColumn()
+	@Column()
 	@IsDate()
 	@ApiProperty({
 		description: 'Creation date',
@@ -75,7 +98,7 @@ export class Project implements IProject {
 	})
 	public createdAt?: Date;
 
-	@UpdateDateColumn()
+	@Column()
 	@IsDate()
 	@ApiProperty({
 		description: 'Last update date',

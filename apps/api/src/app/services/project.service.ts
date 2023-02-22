@@ -41,11 +41,11 @@ export class ProjectService {
 		if (body.description) {
 			projectToUpdate.description = body.description;
 		}
-		if (body.category) {
-			projectToUpdate.category = body.category;
+		if (body.language) {
+			projectToUpdate.language = body.language;
 		}
-		if (body.link) {
-			projectToUpdate.link = body.link;
+		if (body.url) {
+			projectToUpdate.url = body.url;
 		}
 		if (body.startProjectDate) {
 			projectToUpdate.startProjectDate = body.startProjectDate;

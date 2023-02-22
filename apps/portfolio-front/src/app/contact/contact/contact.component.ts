@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { filter, map, of, pipe, Subscription } from 'rxjs';
 
 @Component({
 	selector: 'portfolio-contact',
@@ -7,13 +8,32 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 	styleUrls: ['./contact.component.scss'],
 	encapsulation: ViewEncapsulation.Emulated,
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent implements OnInit, OnDestroy {
 	contactForm!: FormGroup;
 
+	obs: Subscription = new Subscription();
+
+	nums = of(1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+	squareOddVals = pipe(
+		filter((n: number) => n % 2 !== 0),
+		map((n) => n * n)
+	);
+
+	squareOdd = this.squareOddVals(this.nums);
 	constructor(private formBuilder: FormBuilder) {}
 
 	ngOnInit() {
 		this.initContactForm();
+		this.obs = this.squareOdd.subscribe({
+			next: (x) => console.log(x),
+			error: console.error,
+		});
+	}
+	ngOnDestroy() {
+		if (this.obs) {
+			this.obs.unsubscribe();
+		}
 	}
 
 	initContactForm(): void {
@@ -29,7 +49,7 @@ export class ContactComponent implements OnInit {
 	}
 
 	onResetContactForm(): void {
-		this.contactForm.reset();
+		this.contactForm?.reset();
 	}
 
 	transformText(text: string): string {
