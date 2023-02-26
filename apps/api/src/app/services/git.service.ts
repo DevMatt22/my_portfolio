@@ -2,11 +2,10 @@ import { Injectable } from '@nestjs/common';
 
 import { LoggerService } from './logger/logger.service';
 import { Octokit } from '@octokit/rest';
-import { ProjectService } from './project.service';
 
 @Injectable()
 export class GitService {
-	constructor(private readonly loggerService: LoggerService, private readonly projectService: ProjectService) {
+	constructor(private readonly loggerService: LoggerService) {
 		this.loggerService.setContext('GitService');
 	}
 
@@ -23,8 +22,7 @@ export class GitService {
 		return data;
 	}
 
-	//TODO IMPLEMENTER UNE METHODE SEARCH DANS LE PROJECT SERVICE
-	public async createProject(): Promise<void> {
-		//const repositories = await this.getAll();
+	public async createProject() {
+		return await this.getAll();
 	}
 }
