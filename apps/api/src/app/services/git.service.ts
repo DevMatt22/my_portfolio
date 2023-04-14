@@ -21,8 +21,4 @@ export class GitService {
 
 		return data;
 	}
-
-	public async createProject() {
-		return await this.getAll();
-	}
 }
