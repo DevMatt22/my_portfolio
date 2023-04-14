@@ -22,6 +22,7 @@ import { ProjectsModule } from './modules/projects.module';
 					entities: [__dirname + '/../**/*.entity{.ts,.js}'],
 					logging: 'all',
 					synchronize: true,
+					
 				};
 			},
 		}),
